@@ -1,0 +1,12 @@
+ADD BOOK FIELDS:
+Author:
+Description:
+Accession Number: OEB-00000001
+Call Number: OEB TK7895 Sc7 2020
+ISBN: 9781484249321
+Edition:
+Publisher: Apress Open
+Copyright Year: 2020 
+Notes: 
+Subjects: 
+Status:
