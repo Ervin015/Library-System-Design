@@ -128,31 +128,38 @@
                 <div class="flex w-full gap-6">
                     <div class="w-1/4 h-full">
                         <div class="flex flex-col items-center h-full">
-                            <div class="w-full border-2 border-gray-600">
+                            <div class="w-full border-2 border-gray-600 rounded-lg">
                                 <img class="w-full object-cover" src="../Atomic+Habits.png" alt="Atomic Habits Image">
                             </div>
 
-                            <div class="h-[60vh] overflow-y-auto mt-10">
-                                <p class="font-medium text-lg">Title: <span class="font-normal text-lg">Atomic
+                            <div class="w-full h-[60vh] overflow-y-auto mt-6 px-3 pt-4 ">
+                                <p class="font-medium text-lg">Book Title: <span class="font-normal text-lg">Atomic
                                         Habits</span></p>
-                                <hr>
-                                <p class="font-medium text-lg mt-4">Edition: <span class="font-normal text-lg">1st
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">Location Rack: <span
+                                        class="font-normal text-lg">Location</span></p>
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">Edition: <span class="font-normal text-lg">1st
                                         Edition</span></p>
-                                <hr>
-                                <p class="font-medium text-lg mt-4">Author: <span class="font-normal text-lg">James
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">Author: <span class="font-normal text-lg">James
                                         Clear</span></p>
-                                <hr>
-                                <p class="font-medium text-lg mt-4">Publisher: <span
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">Publisher: <span
                                         class="font-normal text-lg">Bookworm Inc.</span></p>
-                                <hr>
-                                <p class="font-medium text-lg mt-4">Category: <span
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">Copyright Year: <span
+                                        class="font-normal text-lg">2000</span></p>
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">Category: <span
                                         class="font-normal text-lg">Category</span></p>
-                                <hr>
-                                <p class="font-medium text-lg mt-4">ISBN: <span
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">Condition: <span
+                                        class="font-normal text-lg">New</span></p>
+                                <!-- <hr> -->
+                                <p class="font-medium text-lg mt-3">ISBN: <span
                                         class="font-normal text-lg">0215789247</span></p>
-                                <hr>
-                                <p class="font-medium text-lg mt-4">Status: <span
-                                        class="font-normal text-lg">Available</span></p>
+                                <!-- <hr> -->
                             </div>
 
                         </div>
@@ -160,15 +167,16 @@
 
                     <div class="w-full h-full">
                         <div class="flex flex-col p-1 h-full">
-                            <div>
+                            <div class="flex justify-between items-center">
                                 <p class="font-medium text-3xl">Atomic Habits: Tiny Changes, Remarkable Results</p>
-                                <p class="text-lg">Author/s: James Clear</p>
+                                <p class="text-xl">Status: <span class="font-medium text-xl">Available</span></p>
                             </div>
+                            <p class="text-lg">Author/s: James Clear</p>
                             <hr class="my-3">
                             <div>
-                                <p class="text-xl text-gray-600">Description</p>
+                                <p class="font-semibold text-xl text-gray-500">Description</p>
                             </div>
-                            <div class="h-[60vh] overflow-y-auto">
+                            <div class="h-[50vh] overflow-y-auto">
                                 <p class="text-xl text-justify text-gray-800 leading-6">Lorem ipsum dolor sit amet,
                                     consectetur
                                     adipiscing
@@ -210,7 +218,58 @@
                                     Quisque vitae enim leo. Sed in vulputate felis. Nam sagittis nunc ac neque feugiat
                                     bibendum eget sed lacus.</p>
                             </div>
-                            <hr class="">
+                            <hr class="my-4">
+
+                            <p class="font-semibold text-xl font-md text-gray-600">Borrow History</p>
+                            <div class="h-[25vh] overflow-y-auto">
+                                <table class="w-full bg-white border border-gray-200 rounded-md shadow-md mt-2">
+                                    <thead class="bg-green-800 text-white text-left sticky top-0 z-10">
+                                        <tr class="bg-green-800 text-white text-center">
+                                            <th
+                                                class="uppercase text-sm py-2 px-8 border-b border-gray-200 w-[16rem] rounded-tl">
+                                                BORROW NO.
+                                            </th>
+                                            <th class="uppercase text-sm py-2 px-8 border-b border-gray-200 w-[16rem]">
+                                                BORROWER'S NAME
+                                            </th>
+                                            <th class="uppercase text-sm py-2 px-8 border-b border-gray-200 w-[16rem]">
+                                                borrower TYPE
+                                            </th>
+                                            <th class="uppercase text-sm py-2 px-8 border-b border-gray-200 w-[16rem]">
+                                                Date BORROWED
+                                            </th>
+                                            <th class="uppercase text-sm py-2 px-8 border-b border-gray-200 w-[16rem]">
+                                                DATE Returned
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody id="tableBody">
+                                        <tr id="noRecordsMessage" class="text-center ">
+                                            <td class="py-8 px-8 border-b border-gray-200 text-gray-500" colspan="5">
+                                                No existing records found.
+                                            </td>
+                                        </tr>
+                                        <tr class="text-center">
+                                            <td class="py-1 px-8 border-b border-gray-200 font-semibold">
+                                                346457282
+                                            </td>
+                                            <td class="py-1 px-8 border-b border-gray-200">
+                                                Juan dela Cruz
+                                            </td>
+                                            <td class="py-1 px-8 border-b border-gray-200">
+                                                Student
+                                            </td>
+                                            <td class="py-1 px-8 border-b border-gray-200">
+                                                11-22-2023
+                                            </td>
+                                            <td class="py-1 px-8 border-b border-gray-200">
+                                                11-28-2023
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             <div class="flex justify-end gap-2">
                                 <!-- borrow -->
                                 <div x-data="{ open: false }">
