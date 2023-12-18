@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+  <link rel="stylesheet" href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    [x-cloak] {
+      display: none;
+    }
+  </style>
+  <title>Patrons</title>
+</head>
+
+<body>
+  <div class="min-h-screen bg-[#F6FFF1] w-full">
+    <!-- START NAVBAR -->
+    <div class="antialiased bg-green-800 dark-mode:bg-gray-900 w-full">
+      <div class="mx-20">
+        <div class="flex w-full text-gray-700 bg--green-800 dark-mode:text-gray-200 dark-mode:bg-gray-800">
+          <div x-data="{ open: true }"
+            class="flex w-full flex-col bg-green-800 text-white px-4 md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
+            <div class="h-10 w-10">
+              <img src="../Login/CvSU logo.png" alt="">
+            </div>
+            <div class="flex flex-row items-center justify-between p-4">
+              <a href="dashboard.html"
+                class="text-lg text-white font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">
+                Library Borrowing and Returning System
+              </a>
+              <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                  <path x-show="!open" fill-rule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
+                    clip-rule="evenodd"></path>
+                  <path x-show="open" fill-rule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clip-rule="evenodd"></path>
+                </svg>
+              </button>
+            </div>
+            <nav :class="{'flex': open, 'hidden': !open}"
+              class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
+              <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                href="../Admin/dashboard.html">Dashboard</a>
+              <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                href="../Admin/book-list.html">List of Books</a>
+              <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                href="../Borrowing History/borrowing history.html">Borrowing History</a>
+              <a class="px-4 py-2 mt-2 text-sm font-semibold bg-gray-200 text-gray-900 rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+                href="library patrons.html">Library Patrons</a>
+              <div
+                class="ml-4 hover:text-gray-900 focus:text-gray-900 rounded-md hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                <div class="flex gap-2 p-1">
+                  <img alt="tania andrew"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
+                    class="relative inline-block h-7 w-7 cursor-pointer rounded-full object-cover object-center"
+                    data-popover-target="profile-menu" />
+                  <div class="flex justify-center items-center cursor-pointer">
+                    <p class="font-medium text-md" data-popover-target="profile-menu">Librarian Name
+                    </p>
+                  </div>
+                </div>
+                <ul role="menu" data-popover="profile-menu" data-popover-placement="bottom"
+                  class="absolute z-10 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-1 font-sans text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none">
+                  <button tabIndex="-1" role="menuitem"
+                    class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pt-[9px] pb-1 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" aria-hidden="true" class="h-4 w-4">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z">
+                      </path>
+                    </svg>
+                    <a href="#">
+                      <p class="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Account Setting
+                      </p>
+                    </a>
+                  </button>
+                  <hr class="border-blue-gray-50" tabindex="-1" role="menuitem" />
+                  <button tabIndex="-1" role="menuitem"
+                    class="flex w-full cursor-pointer select-none items-center gap-2 rounded-md px-3 pb-1 text-start leading-tight outline-none transition-all hover:bg-blue-gray-50 hover:bg-opacity-80 hover:text-blue-gray-900 focus:bg-blue-gray-50 focus:bg-opacity-80 focus:text-blue-gray-900 active:bg-blue-gray-50 active:bg-opacity-80 active:text-blue-gray-900">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                      stroke="currentColor" aria-hidden="true" class="h-4 w-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5.636 5.636a9 9 0 1012.728 0M12 3v9">
+                      </path>
+                    </svg>
+                    <a href="../Login/login-page.html">
+                      <p class="block font-sans text-sm font-normal leading-normal text-inherit antialiased">
+                        Sign Out
+                      </p>
+                    </a>
+                  </button>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END NAVBAR -->
+
+    <!-- CONTAINER -->
+    <div class="flex w-full mt-2 py-10 h-[90vh]">
+      <div class="flex w-full mx-64 gap-12">
+        <div class="flex flex-col w-full rounded-md">
+
+          <div>
+            <div>
+              <div x-data="{ openTab: 1 }" class="pt-3">
+                <div class="w-full">
+                  <p class="font-semibold text-2xl text-white text-center uppercase p-2 bg-green-800 rounded-md">
+                    Library Patrons
+                  </p>
+
+                  <div x-data="{ open: false }">
+                    <div class="flex justify-end">
+                      <button x-on:click="open = true"
+                        class="bg-green-800 hover:bg-green-800 p-3 rounded-md text-white font-medium mt-4">Add
+                        Patron
+                      </button>
+                    </div>
+                    <!-- add patron modal -->
+                    <div x-show="open" x-transition x-cloak class="fixed inset-0 flex items-center justify-center z-20">
+                      <div x-cloak class="bg-gray-800 bg-opacity-75 absolute inset-0"></div>
+                      <div x-cloak class="bg-white p-6 rounded-lg z-10 w-1/3 h-[45vh]">
+                        <h2
+                          class="uppercase bg-green-800 rounded-lg text-lg text-white p-2 font-semibold mb-4 text-center mb-6">
+                          Add New Patron</h2>
+                        <div class="h-[29vh] overflow-y-auto">
+                          <!-- new row -->
+                          <div class="border border-gray-200 rounded-lg p-2 py-4">
+                            <div class="flex flex-row mb-1">
+                              <div class="w-1/2 px-3 mb-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Unique ID
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700 font-semibold"
+                                  id="" type="text" placeholder="unique ID" required>
+                              </div>
+                              <div class="w-1/2 px-3 mb-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Patron ID
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700 font-semibold"
+                                  id="studentNo" type="number" placeholder="Student No./Employee No." maxlength="10"
+                                  oninput="javascript: if (this.value.length > this.maxLength) this.value =
+                                this.value.slice(0, this.maxLength);" required>
+                              </div>
+                            </div>
+                            <hr class="border-1 mb-4">
+                            <!-- new row -->
+                            <div class="flex flex-row mb-1">
+                              <div class="w-1/3 px-3 mb-2">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Last Name
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  id="" type="text" placeholder="
+                                  " required>
+                              </div>
+                              <div class="w-1/3 px-3 mb-2">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  First Name
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  id="" type="text" placeholder="
+                                  " required>
+                              </div>
+                              <div class="w-1/3 px-3 mb-2">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Middle Name
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  id="" type="text" placeholder="
+                                  " required>
+                              </div>
+                            </div>
+
+                            <!-- new row -->
+
+                            <div class="flex flex-row mb-1 mt-2">
+                              <div class="w-1/3 px-3 mb-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Patron Type
+                                </label>
+                                <select id="" name=""
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  required>
+                                  <option selected disabled placeholder="select option">select
+                                    patron type</option>
+                                  <option value="Student">Student</option>
+                                  <option value="Employee">Employee</option>
+                                  <option value="Library Staff">Library Staff</option>
+                                </select>
+                              </div>
+                              <div class="w-1/3 px-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Registration Status
+                                </label>
+                                <select id="" name=""
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  required>
+                                  <option selected disabled placeholder="select option">select
+                                    status</option>
+                                  <option value="Registered">Registered</option>
+                                  <option value="Not Registered">Not Registered</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+                          </form>
+                        </div>
+                        <div class="flex flex-row justify-end gap-2">
+                          <button type="submit"
+                            class="mt-4 bg-green-700 hover:bg-green-800 px-4 py-2 rounded-lg text-white font-medium">Add</button>
+                          <button x-on:click="open = false"
+                            class="mt-4 bg-red-400 hover:bg-red-500 px-4 py-2 rounded-lg text-white font-medium">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- STUDENT -->
+                  <div class="w-full shadow-md mt-1 overflow-y-auto max-h-[70vh]">
+                    <!-- Search bar -->
+                    <div class="flex items-center my-4">
+                      <div class="w-full relative mx-auto text-gray-600">
+                        <input class=" w-full border-2 bg-white h-10 px-5 rounded-md text-lg focus:outline p-6"
+                          type="search" name="search" placeholder="Search here...">
+                        <button type="submit" class="absolute right-0 top-0 mt-4 mr-4">
+                          <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                            viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
+                            xml:space="preserve" width="512px" height="512px">
+                            <path
+                              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                    <table class="w-full bg-white border border-gray-200 rounded-md shadow-md mt-2">
+                      <thead class="bg-green-800 text-white text-left sticky top-0 z-10">
+                        <tr class="bg-green-800 text-white text-center">
+                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem] rounded-tl">
+                            Unique ID
+                          </th>
+                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
+                            Patron ID
+                          </th>
+                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
+                            Name
+                          </th>
+                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
+                            Patron Type
+                          </th>
+                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
+                            Registration Status
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody id="tableBody">
+                        <tr id="noRecordsMessage" class="text-center ">
+                          <td class="py-8 px-8 border-b border-gray-200 text-gray-500" colspan="5">
+                            No existing records found.
+                          </td>
+                        </tr>
+                        <tr class="text-center">
+                          <td class="py-2 px-8 border-b border-gray-200 font-semibold">
+                            <a href="#" class="clickable-cell">202015785</a>
+                          </td>
+                          <td class="py-2 px-8 border-b border-gray-200">
+                            <a href="#" class="clickable-cell">000012844</a>
+                          </td>
+                          <td class="py-2 px-8 border-b border-gray-200">
+                            <a href="#" class="clickable-cell">Juan dela Cruz</a>
+                          </td>
+                          <td class="py-2 px-8 border-b border-gray-200">
+                            <a href="#" class="clickable-cell">Student</a>
+                          </td>
+                          <td class="py-2 px-8 border-b border-gray-200">
+                            <a href="#" class="clickable-cell">Registered</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Right Column -->
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+
+<!-- from cdn -->
+<script type="module" src="https://unpkg.com/@material-tailwind/html@latest/scripts/popover.js"></script>
+
+<!-- student |  empty record message-->
+<script>
+  // JavaScript to check if records exist in the table
+  // Get the table body and the message element
+  const tableBody = document.getElementById('tableBody');
+  const noRecordsMessage = document.getElementById('noRecordsMessage');
+
+  // Check if the table body contains any rows (records)
+  if (tableBody.rows.length === 1) {
+    // If no rows exist, display the message
+    noRecordsMessage.classList.remove('hidden');
+  } else {
+    // If rows exist, hide the message
+    noRecordsMessage.classList.add('hidden');
+  }
+</script>
+
+<!-- employee |  empty record message-->
+<script>
+  // JavaScript to check if records exist in the table
+  // Get the table body and the message element
+  const tableEmployee = document.getElementById('tableEmployee');
+  const noRecordsMessageEmployee = document.getElementById('noRecordsMessageEmployee');
+
+  // Check if the table body contains any rows (records)
+  if (tableEmployee.rows.length === 1) {
+    // If no rows exist, display the message
+    noRecordsMessageEmployee.classList.remove('hidden');
+  } else {
+    // If rows exist, hide the message
+    noRecordsMessageEmployee.classList.add('hidden');
+  }
+</script>
+
+<!-- staff |  empty record message-->
+<script>
+  // JavaScript to check if records exist in the table
+  // Get the table body and the message element
+  const tableStaff = document.getElementById('tableStaff');
+  const noRecordsMessageStaff = document.getElementById('noRecordsMessageStaff');
+
+  // Check if the table body contains any rows (records)
+  if (tableStaff.rows.length === 1) {
+    // If no rows exist, display the message
+    noRecordsMessageStaff.classList.remove('hidden');
+  } else {
+    // If rows exist, hide the message
+    noRecordsMessageStaff.classList.add('hidden');
+  }
+</script>
+
+<!-- guest |  empty record message-->
+<script>
+  // JavaScript to check if records exist in the table
+  // Get the table body and the message element
+  const tableGuest = document.getElementById('tableGuest');
+  const noRecordsMessageGuest = document.getElementById('noRecordsMessageGuest');
+
+  // Check if the table body contains any rows (records)
+  if (tableGuest.rows.length === 1) {
+    // If no rows exist, display the message
+    noRecordsMessageGuest.classList.remove('hidden');
+  } else {
+    // If rows exist, hide the message
+    noRecordsMessageGuest.classList.add('hidden');
+  }
+</script>
+
+</html>
