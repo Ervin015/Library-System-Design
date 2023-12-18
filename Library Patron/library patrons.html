@@ -7,7 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
   <link rel="stylesheet" href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css" />
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
     [x-cloak] {
       display: none;
@@ -113,19 +113,123 @@
             <div>
               <div x-data="{ openTab: 1 }" class="pt-3">
                 <div class="w-full">
-                  <div class="mb-4 flex space-x-4 p-2 bg-white rounded-lg shadow-md border-2">
-                    <button x-on:click="openTab = 1" :class="{ 'bg-green-800 text-white': openTab === 1 }"
-                      class="flex-1 py-3 px-4 rounded-md focus:outline-none border-2 uppercase font-medium focus:shadow-outline-blue transition-all duration-300">Student</button>
-                    <button x-on:click="openTab = 2" :class="{ 'bg-green-800 text-white': openTab === 2 }"
-                      class="flex-1 py-3 px-4 rounded-md focus:outline-none border-2 uppercase font-medium focus:shadow-outline-blue transition-all duration-300">Faculty</button>
-                    <button x-on:click="openTab = 3" :class="{ 'bg-green-800 text-white': openTab === 3 }"
-                      class="flex-1 py-3 px-4 rounded-md focus:outline-none border-2 uppercase font-medium focus:shadow-outline-blue transition-all duration-300">Staff</button>
-                    <button x-on:click="openTab = 4" :class="{ 'bg-green-800 text-white': openTab === 4 }"
-                      class="flex-1 py-3 px-4 rounded-md focus:outline-none border-2 uppercase font-medium focus:shadow-outline-blue transition-all duration-300">Guest</button>
+                  <p class="font-semibold text-2xl text-white text-center uppercase p-2 bg-green-800 rounded-md">
+                    Library Patrons
+                  </p>
+
+                  <div x-data="{ open: false }">
+                    <div class="flex justify-end">
+                      <button x-on:click="open = true"
+                        class="bg-green-800 hover:bg-green-800 p-3 rounded-md text-white font-medium mt-4">Add
+                        Patron
+                      </button>
+                    </div>
+                    <!-- add patron modal -->
+                    <div x-show="open" x-transition x-cloak class="fixed inset-0 flex items-center justify-center z-20">
+                      <div x-cloak class="bg-gray-800 bg-opacity-75 absolute inset-0"></div>
+                      <div x-cloak class="bg-white p-6 rounded-lg z-10 w-1/3 h-[45vh]">
+                        <h2
+                          class="uppercase bg-green-800 rounded-lg text-lg text-white p-2 font-semibold mb-4 text-center mb-6">
+                          Add New Patron</h2>
+                        <div class="h-[29vh] overflow-y-auto">
+                          <!-- new row -->
+                          <div class="border border-gray-200 rounded-lg p-2 py-4">
+                            <div class="flex flex-row mb-1">
+                              <div class="w-1/2 px-3 mb-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Unique ID
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700 font-semibold"
+                                  id="" type="text" placeholder="unique ID" required>
+                              </div>
+                              <div class="w-1/2 px-3 mb-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Patron ID
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700 font-semibold"
+                                  id="studentNo" type="number" placeholder="Student No./Employee No." maxlength="10"
+                                  oninput="javascript: if (this.value.length > this.maxLength) this.value =
+                                this.value.slice(0, this.maxLength);" required>
+                              </div>
+                            </div>
+                            <hr class="border-1 mb-4">
+                            <!-- new row -->
+                            <div class="flex flex-row mb-1">
+                              <div class="w-1/3 px-3 mb-2">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Last Name
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  id="" type="text" placeholder="location rack" required>
+                              </div>
+                              <div class="w-1/3 px-3 mb-2">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  First Name
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  id="" type="text" placeholder="location rack" required>
+                              </div>
+                              <div class="w-1/3 px-3 mb-2">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Middle Name
+                                </label>
+                                <input
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  id="" type="text" placeholder="location rack" required>
+                              </div>
+                            </div>
+
+                            <!-- new row -->
+
+                            <div class="flex flex-row mb-1 mt-2">
+                              <div class="w-1/3 px-3 mb-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Patron Type
+                                </label>
+                                <select id="" name=""
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  required>
+                                  <option selected disabled placeholder="select option">select
+                                    patron type</option>
+                                  <option value="Student">Student</option>
+                                  <option value="Employee">Employee</option>
+                                  <option value="Library Staff">Library Staff</option>
+                                </select>
+                              </div>
+                              <div class="w-1/3 px-3">
+                                <label class="block tracking-wide text-gray-700 text-md font-medium mb-1" for="">
+                                  Registration Status
+                                </label>
+                                <select id="" name=""
+                                  class="w-full border p-2 rounded-md mb-1 focus:outline-none focus:border-green-700"
+                                  required>
+                                  <option selected disabled placeholder="select option">select
+                                    condition</option>
+                                  <option value="Registered">Registered</option>
+                                  <option value="Not Registered">Not Registered</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+
+                          </form>
+                        </div>
+                        <div class="flex flex-row justify-end gap-2">
+                          <button type="submit"
+                            class="mt-4 bg-green-700 hover:bg-green-800 px-4 py-2 rounded-lg text-white font-medium">Add</button>
+                          <button x-on:click="open = false"
+                            class="mt-4 bg-red-400 hover:bg-red-500 px-4 py-2 rounded-lg text-white font-medium">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
                   <!-- STUDENT -->
-                  <div x-show="openTab === 1" class="w-full shadow-md mt-1 overflow-y-auto max-h-[70vh]">
+                  <div class="w-full shadow-md mt-1 overflow-y-auto max-h-[70vh]">
                     <!-- Search bar -->
                     <div class="flex items-center my-4">
                       <div class="w-full relative mx-auto text-gray-600">
@@ -146,16 +250,19 @@
                       <thead class="bg-green-800 text-white text-left sticky top-0 z-10">
                         <tr class="bg-green-800 text-white text-center">
                           <th class="py-3 px-8 border-b border-gray-200 w-[16rem] rounded-tl">
-                            STUDENT NO.
+                            Unique ID
                           </th>
                           <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            NAME
+                            Patron ID
                           </th>
                           <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            PROGRAM
+                            Name
                           </th>
                           <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            REGISTRATION STATUS
+                            Patron Type
+                          </th>
+                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
+                            Registration Status
                           </th>
                         </tr>
                       </thead>
@@ -171,173 +278,13 @@
                             <a href="#" class="clickable-cell">202015785</a>
                           </td>
                           <td class="py-2 px-8 border-b border-gray-200">
+                            <a href="#" class="clickable-cell">000012844</a>
+                          </td>
+                          <td class="py-2 px-8 border-b border-gray-200">
                             <a href="#" class="clickable-cell">Juan dela Cruz</a>
                           </td>
                           <td class="py-2 px-8 border-b border-gray-200">
-                            <a href="#" class="clickable-cell">BSIT</a>
-                          </td>
-                          <td class="py-2 px-8 border-b border-gray-200">
-                            <a href="#" class="clickable-cell">Registered</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    </class=>
-                  </div>
-
-                  <!-- EMPLOYEE -->
-                  <div x-show="openTab === 2" class="w-full shadow-md mt-1 overflow-y-auto max-h-[70vh]">
-                    <!-- Search bar -->
-                    <div class="flex items-center my-4">
-                      <div class="w-full relative mx-auto text-gray-600">
-                        <input class=" w-full border-2 bg-white h-10 px-5 rounded-md text-lg focus:outline p-6"
-                          type="search" name="search" placeholder="Search here...">
-                        <button type="submit" class="absolute right-0 top-0 mt-4 mr-4">
-                          <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                            viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                            xml:space="preserve" width="512px" height="512px">
-                            <path
-                              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    <table class="w-full bg-white border border-gray-200 rounded-md shadow-md mt-2">
-                      <thead class="bg-green-800 text-white text-left sticky top-0 z-10">
-                        <tr class="bg-green-800 text-white text-center">
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem] rounded-tl">
-                            EMPLOYEE NO.
-                          </th>
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            NAME
-                          </th>
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            REGISTRATION STATUS
-                          </th>
-                        </tr>
-                      </thead>
-
-                      <tbody id="tableEmployee">
-                        <tr id="noRecordsMessageEmployee" class="text-center">
-                          <td class="py-8 px-8 border-b border-gray-200 text-gray-500" colspan="5">
-                            No existing records found.
-                          </td>
-                        </tr>
-                        <tr class="text-center">
-                          <td class="py-2 px-8 border-b border-gray-200 font-semibold">
-                            <a href="#" class="clickable-cell">0025484</a>
-                          </td>
-                          <td class="py-2 px-8 border-b border-gray-200">
-                            <a href="#" class="clickable-cell">Stan Smith</a>
-                          </td>
-                          <td class="py-2 px-8 border-b border-gray-200">
-                            <a href="#" class="clickable-cell">Registered</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <!-- STAFF -->
-                  <div x-show="openTab === 3" class="w-full shadow-md mt-1 overflow-y-auto max-h-[70vh]">
-                    <!-- Search bar -->
-                    <div class="flex items-center my-4">
-                      <div class="w-full relative mx-auto text-gray-600">
-                        <input class=" w-full border-2 bg-white h-10 px-5 rounded-md text-lg focus:outline p-6"
-                          type="search" name="search" placeholder="Search here...">
-                        <button type="submit" class="absolute right-0 top-0 mt-4 mr-4">
-                          <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                            viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                            xml:space="preserve" width="512px" height="512px">
-                            <path
-                              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    <table class="w-full bg-white border border-gray-200 rounded-md shadow-md mt-2">
-                      <thead class="bg-green-800 text-white text-left sticky top-0 z-10">
-                        <tr class="bg-green-800 text-white text-center">
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem] rounded-tl">
-                            STAFF ID
-                          </th>
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            NAME
-                          </th>
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            REGISTRATION STATUS
-                          </th>
-                        </tr>
-                      </thead>
-
-                      <tbody id="tableStaff">
-                        <tr id="noRecordsMessageStaff" class="text-center">
-                          <td class="py-8 px-8 border-b border-gray-200 text-gray-500" colspan="5">
-                            No existing records found.
-                          </td>
-                        </tr>
-                        <tr class="text-center">
-                          <td class="py-2 px-8 border-b border-gray-200 font-semibold">
-                            <a href="#" class="clickable-cell">0124751474</a>
-                          </td>
-                          <td class="py-2 px-8 border-b border-gray-200">
-                            <a href="#" class="clickable-cell">Bruce Wayne</a>
-                          </td>
-                          <td class="py-2 px-8 border-b border-gray-200">
-                            <a href="#" class="clickable-cell">Registered</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  <!-- GUEST -->
-                  <div x-show="openTab === 4" class="w-full shadow-md mt-1 overflow-y-auto max-h-[70vh]">
-                    <!-- Search bar -->
-                    <div class="flex items-center my-4">
-                      <div class="w-full relative mx-auto text-gray-600">
-                        <input class=" w-full border-2 bg-white h-10 px-5 rounded-md text-lg focus:outline p-6"
-                          type="search" name="search" placeholder="Search here...">
-                        <button type="submit" class="absolute right-0 top-0 mt-4 mr-4">
-                          <svg class="text-gray-600 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
-                            viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;"
-                            xml:space="preserve" width="512px" height="512px">
-                            <path
-                              d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                          </svg>
-                        </button>
-                      </div>
-                    </div>
-                    <table class="w-full bg-white border border-gray-200 rounded-md shadow-md mt-2">
-                      <thead class="bg-green-800 text-white text-left sticky top-0 z-10">
-                        <tr class="bg-green-800 text-white text-center">
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem] rounded-tl">
-                            GUEST ID
-                          </th>
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            NAME
-                          </th>
-                          <th class="py-3 px-8 border-b border-gray-200 w-[16rem]">
-                            REGISTRATION STATUS
-                          </th>
-                        </tr>
-                      </thead>
-
-                      <tbody id="tableGuest">
-                        <tr id="noRecordsMessageGuest" class="text-center">
-                          <td class="py-8 px-8 border-b border-gray-200 text-gray-500" colspan="5">
-                            No existing records found.
-                          </td>
-                        </tr>
-                        <tr class="text-center">
-                          <td class="py-2 px-8 border-b border-gray-200 font-semibold">
-                            <a href="#" class="clickable-cell">0124751474</a>
-                          </td>
-                          <td class="py-2 px-8 border-b border-gray-200">
-                            <a href="#" class="clickable-cell">Tony Stark</a>
+                            <a href="#" class="clickable-cell">Student</a>
                           </td>
                           <td class="py-2 px-8 border-b border-gray-200">
                             <a href="#" class="clickable-cell">Registered</a>
