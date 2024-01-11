@@ -20,7 +20,8 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      border-radius: 15%;
+      border-radius: 25%;
+      margin-top: 0.5cm;
     }
 
     .calendar {
@@ -164,40 +165,38 @@
     </div>
 
     <!--  Start total chart Dashboard-->
-    <div class="flex w-full justify-between px-96 mt-12">
-      <div class="flex flex-col items-center">
+    <div class="flex">
+      <div class="flex ml-80 flex-col items-center">
         <p class="borrowed-icon">
           <ion-icon name="book-sharp" size="large"></ion-icon>
         </p>
         <p class="mt-2"><b>Borrowed</b></p>
-        <p class="mt-2 text-2xl font-sans"><b>3,257</b></p>
+        <p class="mt-2 text-xl font-sans"><b>3,257</b></p>
+
       </div>
 
-      <div class="flex flex-col items-center">
+      <div class="flex ml-80 flex-col items-center">
         <p class="returned-icon">
           <ion-icon name="checkmark-circle-sharp" size="large"></ion-icon>
         </p>
         <p class="mt-2"><b>Returned</b></p>
-        <p class="mt-2 text-2xl font-sans"><b>1,249</b></p>
+        <p class="mt-2 text-xl font-sans"><b>1,249</b></p>
       </div>
 
-      <div class="flex flex-col items-center">
+      <div class="flex ml-80 flex-col items-center">
         <p class="awaiting-icon">
           <ion-icon name="alert-circle-sharp" size="large"></ion-icon>
         </p>
         <p class="mt-2"><b>Awaiting</b></p>
-        <p class="mt-2 text-2xl font-sans"><b>2,008</b></p>
+        <p class="mt-2 text-xl font-sans"><b>2,008</b></p>
       </div>
     </div>
     <!--  Start  percentage chart Dashboard-->
-    <div class="flex mt-8 mx-64 justify-center">
+    <div class="flex mt-8 justify-center">
       <!-- Left Container for Charts -->
       <div class="flex-shrink-0 w-3/4">
         <!-- Single Card for Charts -->
         <div class="bg-white p-4 border rounded shadow text-center">
-          <div class="text-left mb-4">
-            <p class="font-bold text-2xl text-green-700">Monthly Transaction Report</p>
-          </div>
           <!-- First Percentage Chart -->
           <div class="flex items-center justify-center mb-4">
             <div class="w-40 h-40 flex-shrink-0">
@@ -231,28 +230,28 @@
       </div>
 
       <!-- Right Container for Other Content -->
-      <div class="ml-6 w-1/2">
+      <div class="ml-8 w-1/2">
         <!-- Card for Auto Slideshow -->
         <div x-data="{ activeSlide: 0, slides: ['pic1.jpg', 'pic2.jpg', 'pic3.jpg'] }"
           x-init="() => { setInterval(() => { activeSlide = (activeSlide + 1) % slides.length; }, 3000); }"
           class="relative bg-white p-4 border rounded shadow overflow-hidden">
           <!-- Slideshow Content -->
-          <img class="object-fit" x-bind:src="slides[activeSlide]" alt="Slide Image" class="w-full h-auto rounded">
+          <img x-bind:src="slides[activeSlide]" alt="Slide Image" class="w-full h-auto rounded">
 
           <!-- Queue Dots -->
           <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
             <template x-for="(slide, index) in slides" :key="index">
               <div x-on:click="activeSlide = index"
-                class="w-2 h-2 rounded-full cursor-pointer transition duration-300 transform hover:scale-125 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500"
+                class="w-4 h-4 rounded-full cursor-pointer transition duration-300 transform hover:scale-125 hover:bg-gradient-to-r hover:from-blue-500 hover:to-purple-500"
                 :class="{ 'bg-blue-500': activeSlide === index, 'bg-gray-300': activeSlide !== index }"></div>
             </template>
           </div>
         </div>
 
         <!-- Card for Mini Calendar -->
-        <div class="mt-8 p-4 border rounded shadow bg-white">
+        <div class="mt-1 p-4 border rounded shadow bg-white">
           <div class="calendar">
-            <div class="month bg-green-700 p-2 text-white rounded-sm" id="month"></div>
+            <div class="month" id="month"></div>
             <div class="days" id="days"></div>
           </div>
         </div>
